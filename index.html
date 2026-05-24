@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黄甜甜 · Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0d12;
+    --bg2: #111620;
+    --bg3: #1a2130;
+    --blue: #3b6fd4;
+    --blue-light: #6a9ff0;
+    --blue-dim: rgba(59,111,212,0.15);
+    --white: #f0f4ff;
+    --gray: #7a8aa0;
+    --border: rgba(59,111,212,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 60px;
+    background: rgba(10,13,18,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--blue-light);
+    letter-spacing: 1px;
+  }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-inner {
+    position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 80px;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+  }
+  .hero-content { max-width: 620px; }
+  .hero-photo-wrap {
+    position: relative;
+    flex-shrink: 0;
+  }
+  .hero-photo {
+    width: 280px;
+    height: 380px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    border: 1px solid var(--border);
+    filter: grayscale(10%);
+    transition: filter 0.4s;
+  }
+  .hero-photo:hover { filter: grayscale(0%); }
+  .hero-photo-frame {
+    position: absolute;
+    top: 12px; left: 12px; right: -12px; bottom: -12px;
+    border: 1px solid var(--blue);
+    z-index: -1;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(59,111,212,0.08) 0%, transparent 70%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.3;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--blue-light);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border: 1px solid var(--blue);
+    padding: 6px 14px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 8px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero-name-en {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: 400;
+    color: var(--blue-light);
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-desc {
+    font-size: 16px;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 40px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .tag {
+    background: var(--blue-dim);
+    border: 1px solid var(--border);
+    color: var(--blue-light);
+    padding: 6px 16px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  .hero-links {
+    display: flex; gap: 16px;
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+  .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--blue);
+    color: var(--white);
+    border: 1px solid var(--blue);
+  }
+  .btn-primary:hover { background: var(--blue-light); border-color: var(--blue-light); }
+  .btn-outline {
+    background: transparent;
+    color: var(--blue-light);
+    border: 1px solid var(--blue);
+  }
+  .btn-outline:hover { background: var(--blue-dim); }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 60px; }
+  .section-header {
+    display: flex; align-items: center; gap: 20px;
+    margin-bottom: 60px;
+  }
+  .section-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--blue);
+    letter-spacing: 3px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+  }
+  .section-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--blue), transparent);
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--bg2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--gray);
+    line-height: 1.9;
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+  .about-text p span { color: var(--white); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .skill-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 20px;
+    transition: border-color 0.3s;
+  }
+  .skill-card:hover { border-color: var(--blue); }
+  .skill-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--blue);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .skill-items {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  /* ── WORKS ── */
+  #works { background: var(--bg); }
+  .works-tabs {
+    display: flex; gap: 0;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tab-btn {
+    background: none; border: none;
+    color: var(--gray);
+    padding: 12px 24px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+  }
+  .tab-btn.active { color: var(--blue-light); border-bottom-color: var(--blue); }
+  .tab-btn:hover { color: var(--white); }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* Poster grid */
+  .poster-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .poster-item {
+    position: relative; overflow: hidden;
+    aspect-ratio: 3/4;
+    cursor: pointer;
+  }
+  .poster-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .poster-item:hover img { transform: scale(1.05); }
+  .poster-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.3s;
+    display: flex; align-items: flex-end; padding: 16px;
+  }
+  .poster-item:hover .poster-overlay { opacity: 1; }
+  .poster-overlay span {
+    font-size: 12px; color: var(--white);
+    letter-spacing: 1px;
+  }
+
+  /* Cover grid */
+  .cover-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .cover-item {
+    position: relative; overflow: hidden;
+    aspect-ratio: 9/16;
+    cursor: pointer;
+  }
+  .cover-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .cover-item:hover img { transform: scale(1.05); }
+  .cover-caption {
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 8px;
+    letter-spacing: 1px;
+  }
+
+  /* Drama */
+  .drama-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .drama-chars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .drama-char {
+    position: relative; overflow: hidden;
+    aspect-ratio: 9/16;
+  }
+  .drama-char img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .char-name {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 20px 12px 10px;
+    font-size: 12px;
+    color: var(--white);
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  .drama-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 16px;
+    color: var(--blue-light);
+  }
+  .drama-info p {
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .drama-tools {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 28px;
+  }
+  .drama-video {
+    width: 100%;
+    margin-top: 24px;
+    border: 1px solid var(--border);
+  }
+  video { display: block; width: 100%; }
+
+  /* App */
+  .app-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .app-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--blue-light);
+    margin-bottom: 16px;
+  }
+  .app-info p {
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .app-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .feature-item {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--blue-light);
+    letter-spacing: 1px;
+  }
+  .app-screens {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .app-screens img {
+    width: 100%;
+    border: 1px solid var(--border);
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--bg2);
+    text-align: center;
+  }
+  .contact-inner { max-width: 600px; margin: 0 auto; }
+  .contact-inner p {
+    color: var(--gray);
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+  .contact-items {
+    display: flex; justify-content: center; gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+  .contact-item {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .contact-item-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--blue);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .contact-item-value {
+    font-size: 14px;
+    color: var(--white);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 28px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer span {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 1px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 70px 24px; }
+    #hero { padding: 100px 24px 60px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-photo { width: 200px; height: 260px; }
+    .hero-photo-wrap { justify-self: center; }
+    .about-grid { grid-template-columns: 1fr; }
+    .poster-grid { grid-template-columns: repeat(2, 1fr); }
+    .cover-grid { grid-template-columns: repeat(2, 1fr); }
+    .drama-layout { grid-template-columns: 1fr; }
+    .app-layout { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">TT</div>
+  <div class="nav-links">
+    <a href="#about">关于</a>
+    <a href="#works">作品</a>
+    <a href="#contact">联系</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">Portfolio · 2026</div>
+      <div class="hero-name">黄甜甜</div>
+      <div class="hero-name-en">Huang Tiantian</div>
+      <p class="hero-desc">
+        成均馆大学媒体传播学硕士在读，热爱新媒体内容创作与运营。<br>
+        对 AIGC 充满好奇，持续探索 AI 工具在内容生产中的可能性。
+      </p>
+      <div class="hero-tags">
+        <span class="tag">内容创作</span>
+        <span class="tag">新媒体运营</span>
+        <span class="tag">AIGC</span>
+        <span class="tag">视频策划</span>
+        <span class="tag">韩语 TOPIK 6级</span>
+      </div>
+      <div class="hero-links">
+        <a href="#works" class="btn btn-primary">查看作品</a>
+        <a href="#contact" class="btn btn-outline">联系我</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <img src="images/avatar.jpg" alt="黄甜甜" class="hero-photo">
+      <div class="hero-photo-frame"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2 class="section-title">关于我</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>就读于<span>成均馆大学（韩国TOP3）</span>媒体传播学硕士，本科同校毕业。在韩国生活四年，对韩国内容生态与用户审美有一定了解。</p>
+      <p>目前正在运营<span>金融垂直自媒体</span>（视频号 + 小红书），尝试贵金属赛道的内容创作与发布，积累实战经验。同时对 AIGC 创作保持浓厚兴趣，独立完成过 AI 动画短剧的制作。</p>
+      <p>相信技术是创意的延伸，喜欢探索 AI 工具和内容创作结合的各种可能。</p>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-card">
+        <div class="skill-label">AI 工具</div>
+        <div class="skill-items">可灵 · 海螺 · Tensor Art<br>Claude · ChatGPT · Cursor</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">内容创作</div>
+        <div class="skill-items">视频脚本 · 图文排版<br>选题策划 · 热点追踪</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">设计工具</div>
+        <div class="skill-items">Figma · Canva<br>Photoshop（基础）</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">数据分析</div>
+        <div class="skill-items">Python · R · Excel<br>LDA 主题建模</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">语言能力</div>
+        <div class="skill-items">中文（母语）<br>韩语 TOPIK 6级<br>英语 IELTS 6.0</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">认证</div>
+        <div class="skill-items">Claude 101<br>Anthropic · 2026.04</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title">作品</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="works-tabs reveal">
+    <button class="tab-btn active" onclick="switchTab('posters')">AI 生成海报</button>
+    <button class="tab-btn" onclick="switchTab('covers')">视频封面</button>
+    <button class="tab-btn" onclick="switchTab('drama')">AI 动画短剧</button>
+    <button class="tab-btn" onclick="switchTab('app')">AI 学习应用</button>
+  </div>
+
+  <!-- Posters -->
+  <div id="tab-posters" class="tab-panel active">
+    <div class="poster-grid">
+      <div class="poster-item">
+        <img src="images/poster1.png" alt="中国风水墨海报">
+        <div class="poster-overlay"><span>中国风水墨海报</span></div>
+      </div>
+      <div class="poster-item">
+        <img src="images/poster2.png" alt="化妆品产品海报">
+        <div class="poster-overlay"><span>化妆品产品海报</span></div>
+      </div>
+      <div class="poster-item">
+        <img src="images/poster3.png" alt="复古家具展览海报">
+        <div class="poster-overlay"><span>复古家具展览海报</span></div>
+      </div>
+      <div class="poster-item">
+        <img src="images/poster4.png" alt="时装品牌宣传海报">
+        <div class="poster-overlay"><span>时装品牌宣传海报</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Covers -->
+  <div id="tab-covers" class="tab-panel">
+    <div class="cover-grid">
+      <div>
+        <div class="cover-item"><img src="images/cover1.png" alt="黄金价值锚点"></div>
+        <div class="cover-caption">黄金价值锚点</div>
+      </div>
+      <div>
+        <div class="cover-item"><img src="images/cover2.png" alt="白银真相"></div>
+        <div class="cover-caption">白银真相</div>
+      </div>
+      <div>
+        <div class="cover-item"><img src="images/cover3.png" alt="白银终局"></div>
+        <div class="cover-caption">白银终局</div>
+      </div>
+      <div>
+        <div class="cover-item"><img src="images/cover4.png" alt="美以伊战·金银分析"></div>
+        <div class="cover-caption">美以伊战·金银分析</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drama -->
+  <div id="tab-drama" class="tab-panel">
+    <div class="drama-layout">
+      <div>
+        <div class="drama-chars">
+          <div class="drama-char">
+            <img src="images/drama_jack.jpg" alt="杰克·奥·兰">
+            <div class="char-name">杰克·奥·兰</div>
+          </div>
+          <div class="drama-char">
+            <img src="images/drama_girl.jpg" alt="艾玛·伍兹">
+            <div class="char-name">艾玛·伍兹</div>
+          </div>
+        </div>
+      </div>
+      <div class="drama-info">
+        <h3>第五人格 AI 动画短剧</h3>
+        <p>以网易游戏《第五人格》为题材，独立完成 AI 动画短剧从策划到成片的全流程制作。使用 Tensor Art 生成角色立绘，可灵、海螺进行动画视频生成，剪映完成剪辑合成。</p>
+        <div class="drama-tools">
+          <span class="tag">Tensor Art</span>
+          <span class="tag">可灵</span>
+          <span class="tag">海螺</span>
+          <span class="tag">剪映</span>
+        </div>
+        <div class="drama-video">
+          <video controls preload="metadata">
+            <source src="images/drama.mp4" type="video/mp4">
+            您的浏览器不支持视频播放
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- App -->
+  <div id="tab-app" class="tab-panel">
+    <div class="app-layout">
+      <div class="app-info">
+        <h3>MIT AI 学习应用</h3>
+        <p>基于 MIT《How to AI》（MAS.S60）课程内容，独立开发的 AI 辅助学习 Web 应用。支持中英双语切换，部署至 GitHub Pages 可公开访问。</p>
+        <div class="app-features">
+          <div class="feature-item">闪卡记忆</div>
+          <div class="feature-item">测验系统</div>
+          <div class="feature-item">知识图谱</div>
+          <div class="feature-item">AI 问答</div>
+          <div class="feature-item">学习追踪</div>
+          <div class="feature-item">中英双语</div>
+        </div>
+        <a href="https://cuamcuam0331-png.github.io/mit-ai-learning-app/" target="_blank" class="btn btn-primary">访问应用 →</a>
+      </div>
+      <div class="app-screens">
+        <img src="images/app1.png" alt="学习控制台">
+        <img src="images/app2.png" alt="闪卡记忆">
+        <img src="images/app3.png" alt="测验系统">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header reveal" style="justify-content:center; text-align:center;">
+    <span class="section-num">03</span>
+    <h2 class="section-title">联系我</h2>
+  </div>
+  <div class="contact-inner">
+    <p class="reveal">欢迎内容创作、新媒体运营、AIGC 相关的实习或合作机会。</p>
+    <div class="contact-items reveal">
+      <div class="contact-item">
+        <span class="contact-item-label">邮箱</span>
+        <span class="contact-item-value">cuamcuam0331@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">手机</span>
+        <span class="contact-item-value">+86 13695721085</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">院校</span>
+        <span class="contact-item-value">成均馆大学 媒体传播学</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <a href="https://cuamcuam0331-png.github.io/mit-ai-learning-app/" target="_blank" class="btn btn-outline">MIT AI App →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 黄甜甜 · Huang Tiantian</span>
+  <span>Media & Communication · Sungkyunkwan University</span>
+</footer>
+
+<script>
+// Tab switching
+function switchTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
