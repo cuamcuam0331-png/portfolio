@@ -642,7 +642,7 @@
   /* App section */
   .app-layout {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
   .app-item {
@@ -875,7 +875,7 @@
   @media (max-width: 480px) {
     .poster-grid { grid-template-columns: repeat(2, 1fr); }
     .cover-grid { grid-template-columns: repeat(2, 1fr); }
-    .app-layout { grid-template-columns: 1fr; }
+    .app-layout { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -1139,6 +1139,19 @@
         <div class="app-info">
           <div class="app-name">测验系统</div>
           <div class="app-tool">MIT App Inventor</div>
+        </div>
+      </div>
+      <div class="app-item">
+        <div class="app-screen">
+          <img src="images/app4.png" alt="AI Chat" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="app-screen-placeholder" style="display:none">
+            <div class="img-icon">📲</div>
+            <span>app4.png</span>
+          </div>
+        </div>
+        <div class="app-info">
+          <div class="app-name">AI Chat 助教</div>
+          <div class="app-tool">MIT App Inventor · Gemini API</div>
         </div>
       </div>
     </div>
