@@ -8,16 +8,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #070b10;
-    --bg2: #0e1520;
-    --bg3: #16202e;
-    --blue: #3b78e7;
-    --blue-glow: rgba(59,120,231,0.35);
-    --blue-light: #7eb5ff;
-    --white: #eef2ff;
-    --gray: #6e82a0;
-    --gray2: #3a4d63;
-    --border: rgba(59,120,231,0.18);
+    --bg: #fafbfc;
+    --bg2: #eef3f6;
+    --bg3: #ffffff;
+    --blue: #29465b;
+    --blue-glow: rgba(41,70,91,0.22);
+    --blue-light: #3f7385;
+    --white: #1f2a33;
+    --gray: #56636d;
+    --gray2: #a3b0b9;
+    --border: rgba(41,70,91,0.14);
     --accent: #e0a96d;
   }
 
@@ -42,7 +42,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
     padding: 18px 60px;
-    background: rgba(7,11,16,0.82);
+    background: rgba(250,251,252,0.86);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
   }
@@ -87,8 +87,8 @@
   .hero-bg-grid {
     position: absolute; inset: 0;
     background-image:
-      linear-gradient(rgba(59,120,231,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59,120,231,0.05) 1px, transparent 1px);
+      linear-gradient(rgba(41,70,91,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(41,70,91,0.045) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
   }
@@ -101,12 +101,12 @@
   }
   .hero-orb-1 {
     width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(59,120,231,0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(78,122,137,0.16) 0%, transparent 70%);
     top: -100px; right: 200px;
   }
   .hero-orb-2 {
     width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(224,169,109,0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(224,169,109,0.14) 0%, transparent 70%);
     bottom: 0; left: 100px;
   }
 
@@ -145,7 +145,7 @@
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -1px;
-    color: var(--white);
+    color: var(--blue);
     margin-bottom: 8px;
   }
   .hero-name-en {
@@ -178,14 +178,14 @@
     border-radius: 100px;
     font-size: 12px;
     color: var(--gray);
-    background: rgba(59,120,231,0.05);
+    background: rgba(41,70,91,0.04);
     letter-spacing: 0.5px;
     transition: all 0.3s;
   }
   .chip:hover {
     border-color: var(--blue);
     color: var(--blue-light);
-    background: rgba(59,120,231,0.1);
+    background: rgba(41,70,91,0.08);
   }
 
   .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
@@ -202,13 +202,13 @@
   }
   .btn-primary {
     background: var(--blue);
-    color: var(--white);
+    color: #ffffff;
     border: 1px solid var(--blue);
     box-shadow: 0 0 20px var(--blue-glow);
   }
   .btn-primary:hover {
     background: transparent;
-    color: var(--blue-light);
+    color: var(--blue);
     box-shadow: 0 0 30px var(--blue-glow);
   }
   .btn-outline {
@@ -355,7 +355,7 @@
     font-family: 'Playfair Display', serif;
     font-size: clamp(28px, 4vw, 44px);
     font-weight: 700;
-    color: var(--white);
+    color: var(--blue);
   }
   .section-line {
     flex: 1;
@@ -388,6 +388,7 @@
   }
   .stat-card {
     background: var(--bg3);
+    box-shadow: 0 2px 10px rgba(41,70,91,0.06);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 24px;
@@ -445,7 +446,7 @@
   .poster-item:hover {
     border-color: var(--blue);
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 12px 32px rgba(41,70,91,0.12);
   }
   .poster-item img {
     width: 100%; height: 100%;
@@ -488,7 +489,7 @@
   .cover-item:hover {
     border-color: var(--blue);
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 12px 32px rgba(41,70,91,0.12);
   }
   .cover-item img {
     width: 100%; height: 100%;
@@ -530,7 +531,7 @@
   }
   .drama-char:hover {
     border-color: var(--blue);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 12px 32px rgba(41,70,91,0.12);
   }
   .drama-char-img {
     aspect-ratio: 3/4;
@@ -639,8 +640,25 @@
     letter-spacing: 1px;
   }
 
-  /* App section */
-  .app-layout {
+  /* Mini game */
+  .game-layout {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .game-notes {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 24px;
+  }
+  .game-note { margin-bottom: 16px; }
+  .game-note:last-child { margin-bottom: 0; }
+  .game-note-title { font-size: 13px; color: var(--white); font-weight: 500; margin-bottom: 4px; }
+  .game-note-desc { font-size: 13px; color: var(--gray); line-height: 1.8; }
+
+  /* App section */  .app-layout {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
@@ -656,7 +674,7 @@
   .app-item:hover {
     border-color: var(--blue);
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 12px 32px rgba(41,70,91,0.12);
   }
   .app-screen {
     background: var(--bg2);
@@ -700,14 +718,92 @@
     letter-spacing: 1px;
   }
 
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--bg); }
+  .exp-inner { max-width: 1100px; margin: 0 auto; }
+  .exp-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .exp-company { font-size: 24px; font-weight: 500; color: var(--white); }
+  .exp-role { font-size: 13px; color: var(--blue-light); margin-top: 6px; letter-spacing: 0.5px; }
+  .exp-date { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--gray); letter-spacing: 1px; }
+  .exp-kpis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .exp-note {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.5px;
+    margin: 14px 0 48px;
+  }
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .case-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .case-card:hover {
+    border-color: var(--blue);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(41,70,91,0.12);
+  }
+  .case-shot { display: block; background: #fff; }
+  .case-shot img { width: 100%; display: block; }
+  .case-body { padding: 20px 22px 24px; }
+  .case-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--blue);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .case-title { font-size: 16px; color: var(--white); font-weight: 500; }
+  .case-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    color: var(--blue-light);
+    display: block;
+    margin: 6px 0 8px;
+  }
+  .case-desc { font-size: 13px; color: var(--gray); line-height: 1.8; }
+  .exp-duties {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .duty {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .duty-title { font-size: 14px; color: var(--white); font-weight: 500; margin-bottom: 6px; }
+  .duty-desc { font-size: 13px; color: var(--gray); line-height: 1.8; }
+
   /* ── SKILLS ── */
   #skills { background: var(--bg2); }
   .skills-inner { max-width: 1100px; margin: 0 auto; }
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
+  .skill-meta { font-size: 12px; color: var(--blue-light); letter-spacing: 0.5px; }
   .skill-group {
     background: var(--bg3);
     border: 1px solid var(--border);
@@ -715,7 +811,7 @@
     padding: 28px;
     transition: border-color 0.3s;
   }
-  .skill-group:hover { border-color: rgba(59,120,231,0.4); }
+  .skill-group:hover { border-color: rgba(41,70,91,0.35); }
   .skill-group-title {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
@@ -807,7 +903,7 @@
   .contact-link:hover {
     border-color: var(--blue);
     color: var(--white);
-    background: rgba(59,120,231,0.08);
+    background: rgba(41,70,91,0.06);
   }
   .contact-link svg {
     width: 16px; height: 16px;
@@ -855,6 +951,37 @@
     transform: none;
   }
 
+  /* Hero entrance: content rises in one line after another */
+  @keyframes heroIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: none; }
+  }
+  .hero-content > * { animation: heroIn 0.8s ease both; }
+  .hero-content > *:nth-child(1) { animation-delay: 0.05s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.15s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.25s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.38s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.5s; }
+  .hero-content > *:nth-child(6) { animation-delay: 0.62s; }
+  .hero-photo-col { animation: heroIn 1s ease 0.3s both; }
+
+  /* Background glow drifts slowly */
+  @keyframes drift1 {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(-60px, 40px) scale(1.12); }
+  }
+  @keyframes drift2 {
+    from { transform: translate(0, 0); }
+    to { transform: translate(70px, -30px); }
+  }
+  .hero-orb-1 { animation: drift1 14s ease-in-out infinite alternate; }
+  .hero-orb-2 { animation: drift2 18s ease-in-out infinite alternate; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-content > *, .hero-photo-col, .hero-orb-1, .hero-orb-2, .scroll-line, .nav-dot { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
@@ -869,7 +996,13 @@
     .drama-layout { grid-template-columns: 1fr; }
     .app-layout { grid-template-columns: repeat(2, 1fr); }
     .skills-grid { grid-template-columns: 1fr; }
+    .case-grid, .exp-duties, .game-layout { grid-template-columns: 1fr; }
+    .hero-desc br { display: none; }
     footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px; }
+  }
+
+  @media (max-width: 600px) {
+    .exp-kpis { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 480px) {
@@ -887,6 +1020,7 @@
   <div class="nav-links">
     <span class="nav-dot"></span>
     <a href="#about">关于</a>
+    <a href="#experience">经历</a>
     <a href="#works">作品</a>
     <a href="#skills">技能</a>
     <a href="#contact">联系</a>
@@ -905,18 +1039,20 @@
       <div class="hero-name">黄甜甜</div>
       <div class="hero-name-en">Huang Tiantian</div>
       <p class="hero-desc">
-        成均馆大学<em>媒体传播学</em>硕士在读，热爱新媒体内容创作与运营。<br>
-        对 <em>AIGC</em> 充满好奇，持续探索 AI 工具在内容生产中的可能性。
+        海外内容运营 · 游戏 / 社区运营。运营 4 个 YouTube 频道，<br>
+        累计播放 <em>529万+</em>，新增订阅 <em>5,900+</em>，新号 <em>1 个月破千订阅</em>。<br>
+        成均馆大学媒体传播学硕士在读，中韩双语（TOPIK 6级）。
       </p>
       <div class="hero-chips">
-        <span class="chip">内容创作</span>
-        <span class="chip">新媒体运营</span>
+        <span class="chip">海外频道运营</span>
+        <span class="chip">新号冷启动</span>
+        <span class="chip">中韩内容本地化</span>
+        <span class="chip">数据复盘</span>
         <span class="chip">AIGC</span>
-        <span class="chip">视频策划</span>
         <span class="chip">韩语 TOPIK 6级</span>
       </div>
       <div class="hero-btns">
-        <a href="#works" class="btn btn-primary">查看作品</a>
+        <a href="#experience" class="btn btn-primary">查看经历</a>
         <a href="#contact" class="btn btn-outline">联系我</a>
       </div>
     </div>
@@ -952,23 +1088,121 @@
         <div class="section-line"></div>
       </div>
       <div class="about-text">
-        <p>我是<strong>黄甜甜</strong>，目前就读于<strong>成均馆大学媒体传播学院</strong>硕士一年级，来自中国，在韩国生活已有一段时间，韩语通过 <em>TOPIK 6级</em>。</p>
-        <p>热衷于<strong>新媒体内容创作</strong>，在视频号和小红书运营金融自媒体账号，探索内容与数据的交集。对 <em>AIGC</em> 有浓厚兴趣，尝试用 Tensor Art、可灵等工具制作 AI 动画短剧，也曾使用 MIT App Inventor 开发 AI 学习应用。</p>
-        <p>目前研究方向聚焦于 <em>AI 聊天机器人使用与情绪健康</em> 的关系，希望将学术研究与实际传播实践相结合。</p>
+        <p>我是<strong>黄甜甜</strong>，目前就读于<strong>成均馆大学媒体传播学院</strong>硕士一年级，来自中国，中文母语，韩语通过 <em>TOPIK 6级</em>。</p>
+        <p>2026 年 6 月起在<strong>上海克雷斯特</strong>担任新媒体运营实习生，负责 4 个 YouTube 短剧频道（韩语、繁体中文市场），从选品、标题封面本地化到数据复盘全流程运营。此前在视频号和小红书运营金融垂类账号。</p>
+        <p>我也是一名<strong>游戏玩家</strong>：王者荣耀 7 年（最高荣耀王者）、金铲铲之战 4 年（最高大师），最近在玩无畏契约。希望把内容运营的经验带进游戏行业，做连接韩国与中文玩家的运营。</p>
+        <p>对 <em>AIGC</em> 有浓厚兴趣，用 Tensor Art、可灵制作过《第五人格》AI 动画短剧。研究方向聚焦于 <em>AI 聊天机器人使用与情绪健康</em> 的关系。</p>
       </div>
     </div>
     <div class="about-stats">
+      <div class="stat-card">
+        <span class="stat-num">529万+</span>
+        <span class="stat-label">YouTube 累计播放</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">1个月</span>
+        <span class="stat-label">新号破 1,000 订阅</span>
+      </div>
       <div class="stat-card">
         <span class="stat-num">6级</span>
         <span class="stat-label">韩语 TOPIK</span>
       </div>
       <div class="stat-card">
-        <span class="stat-num">2+</span>
-        <span class="stat-label">自媒体平台运营</span>
+        <span class="stat-num">7年</span>
+        <span class="stat-label">王者荣耀 · 最高荣耀王者</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="exp-inner">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">实习经历</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="exp-head reveal">
+      <div>
+        <div class="exp-company">上海克雷斯特</div>
+        <div class="exp-role">新媒体运营实习生 · YouTube 海外短剧频道</div>
+      </div>
+      <div class="exp-date">2026.06 – 至今</div>
+    </div>
+
+    <div class="exp-kpis reveal">
+      <div class="stat-card">
+        <span class="stat-num">529万+</span>
+        <span class="stat-label">累计播放量</span>
       </div>
       <div class="stat-card">
-        <span class="stat-num">AI</span>
-        <span class="stat-label">短剧 & 应用开发</span>
+        <span class="stat-num">130万+</span>
+        <span class="stat-label">观看时长（小时）</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">5,900+</span>
+        <span class="stat-label">新增订阅</span>
+      </div>
+    </div>
+    <p class="exp-note">4 个频道合计（韩语、繁体中文市场各 2 个）· 数据来源 YouTube Studio · 2026.06.22 – 2026.10.05</p>
+
+    <div class="case-grid reveal">
+      <div class="case-card">
+        <a class="case-shot" href="images/yt_honjjul.jpg" target="_blank"><img src="images/yt_honjjul.jpg" alt="혼쭐극장 YouTube Studio 数据" loading="lazy"></a>
+        <div class="case-body">
+          <div class="case-tag">韩语频道 · 新号冷启动</div>
+          <div class="case-title">혼쭐극장</div>
+          <span class="case-num">1个月破 1,000 订阅</span>
+          <p class="case-desc">从零开始运营，2 个月订阅突破 1,500，累计播放 30 万+、观看时长 14 万+ 小时。（2026.07.01 – 09.01）</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <a class="case-shot" href="images/yt_sungan.jpg" target="_blank"><img src="images/yt_sungan.jpg" alt="순간드라마 YouTube Studio 数据" loading="lazy"></a>
+        <div class="case-body">
+          <div class="case-tag">韩语频道 · 成熟频道增长</div>
+          <div class="case-title">순간드라마</div>
+          <span class="case-num">10 周 335万+ 播放</span>
+          <p class="case-desc">接手 6 万+订阅频道并保持日更，观看时长 92 万+ 小时，新增订阅 2,291。（2026.06.22 – 09.01）</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <a class="case-shot" href="images/yt_meiri.jpg" target="_blank"><img src="images/yt_meiri.jpg" alt="每日新劇 YouTube Studio 数据" loading="lazy"></a>
+        <div class="case-body">
+          <div class="case-tag">繁体中文频道</div>
+          <div class="case-title">每日新劇 Sweet Dramas</div>
+          <span class="case-num">97.9万 播放</span>
+          <p class="case-desc">新增订阅 1,489；近 28 天新增订阅环比 +85%。（2026.09.01 – 10.05）</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <a class="case-shot" href="images/yt_gufeng.jpg" target="_blank"><img src="images/yt_gufeng.jpg" alt="古風甜劇社 YouTube Studio 数据" loading="lazy"></a>
+        <div class="case-body">
+          <div class="case-tag">繁体中文频道</div>
+          <div class="case-title">古風甜劇社 SweetDrama</div>
+          <span class="case-num">65.9万 播放</span>
+          <p class="case-desc">新增订阅 702；近 28 天新增订阅环比 +60%，观看时长环比 +28%。（2026.09.01 – 10.05）</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-duties reveal">
+      <div class="duty">
+        <div class="duty-title">选品与发布排期</div>
+        <p class="duty-desc">统筹 4 个频道的短剧选品与发布节奏，整体每周发布 20–28 部。</p>
+      </div>
+      <div class="duty">
+        <div class="duty-title">标题与封面本地化</div>
+        <p class="duty-desc">负责韩语内容翻译审校，按韩国用户的表达习惯与点击偏好重写标题和文案。</p>
+      </div>
+      <div class="duty">
+        <div class="duty-title">字幕与多语言音轨</div>
+        <p class="duty-desc">配置字幕及多语言音轨，覆盖不同地区观众。</p>
+      </div>
+      <div class="duty">
+        <div class="duty-title">数据复盘</div>
+        <p class="duty-desc">复盘展示点击率、流量来源与观看时长，调整选剧与发布策略；单条最高播放 14 万、最高展示点击率 28%+。</p>
       </div>
     </div>
   </div>
@@ -978,44 +1212,145 @@
 <section id="works">
   <div class="works-inner">
     <div class="section-header reveal">
-      <span class="section-num">02</span>
+      <span class="section-num">03</span>
       <h2 class="section-title">作品集</h2>
       <div class="section-line"></div>
     </div>
 
-    <!-- 小红书封面 -->
-    <div class="work-category reveal">小红书封面设计 · Xiaohongshu Cover Design</div>
-    <div class="cover-grid reveal">
-      <!-- 放4张小红书封面图 -->
-      <div class="cover-item">
-        <img src="images/cover1.jpg" alt="小红书封面1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="cover-item-placeholder" style="display:none">
-          <div class="img-icon">📱</div>
-          <span>cover1.jpg</span>
+    <!-- AI动画短剧 -->
+    <div class="work-category reveal">《第五人格》AI 动画短剧 · AI Animation</div>
+    <div class="drama-layout reveal">
+      <div class="drama-char">
+        <div class="drama-char-img">
+          <img src="images/drama_jack.jpg" alt="杰克·奥·兰" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="drama-char-img-placeholder" style="display:none">
+            <div class="img-icon">🎭</div>
+            <span>drama_jack.jpg</span>
+          </div>
+        </div>
+        <div class="drama-char-info">
+          <div class="drama-char-name">杰克·奥·兰</div>
+          <div class="drama-char-tool">《第五人格》角色 · Tensor Art 生成</div>
         </div>
       </div>
-      <div class="cover-item">
-        <img src="images/cover2.jpg" alt="小红书封面2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="cover-item-placeholder" style="display:none">
-          <div class="img-icon">📱</div>
-          <span>cover2.jpg</span>
+      <div class="drama-char">
+        <div class="drama-char-img">
+          <img src="images/drama_girl.jpg" alt="艾玛·伍兹" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="drama-char-img-placeholder" style="display:none">
+            <div class="img-icon">🎭</div>
+            <span>drama_girl.jpg</span>
+          </div>
         </div>
-      </div>
-      <div class="cover-item">
-        <img src="images/cover3.jpg" alt="小红书封面3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="cover-item-placeholder" style="display:none">
-          <div class="img-icon">📱</div>
-          <span>cover3.jpg</span>
-        </div>
-      </div>
-      <div class="cover-item">
-        <img src="images/cover4.jpg" alt="小红书封面4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="cover-item-placeholder" style="display:none">
-          <div class="img-icon">📱</div>
-          <span>cover4.jpg</span>
+        <div class="drama-char-info">
+          <div class="drama-char-name">艾玛·伍兹</div>
+          <div class="drama-char-tool">《第五人格》角色 · Tensor Art 生成</div>
         </div>
       </div>
     </div>
+    <div class="drama-video reveal">
+      <video controls src="images/drama.mp4" style="width:100%;display:block;max-height:280px;object-fit:contain;background:#000;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"></video>
+      <div class="drama-video-placeholder" style="display:none">
+        <div class="play-icon"></div>
+        <span>drama.mp4 · 视频上传后自动显示</span>
+      </div>
+      <div class="drama-video-info">
+        <div>
+          <div class="drama-title">《第五人格》AI 动画短剧</div>
+          <div class="drama-sub">Tensor Art + 可灵 + 海螺 · 独立策划制作</div>
+        </div>
+        <span class="tool-badge">AIGC</span>
+      </div>
+    </div>
+
+    <!-- 小游戏 -->
+    <div class="work-category reveal">网页小游戏 · p5.js</div>
+    <div class="game-layout reveal">
+      <div class="drama-video">
+        <video controls muted playsinline preload="metadata" src="images/game_dog.mp4" style="width:100%;display:block;max-height:320px;object-fit:contain;background:#87cde5;"></video>
+        <div class="drama-video-info">
+          <div>
+            <div class="drama-title">狗狗躲避小游戏</div>
+            <div class="drama-sub">p5.js · 成均馆大学《元宇宙与内容商业》课程项目 · 2025</div>
+          </div>
+          <span class="tool-badge">GAME</span>
+        </div>
+      </div>
+      <div class="game-notes">
+        <div class="game-note">
+          <div class="game-note-title">玩法</div>
+          <p class="game-note-desc">选择一只小狗，用鼠标躲避从天而降的障碍物；坚持 40 秒即可通关，获得狗狗零食罐奖励。</p>
+        </div>
+        <div class="game-note">
+          <div class="game-note-title">难度曲线</div>
+          <p class="game-note-desc">障碍物随时间变大、下落加速，难度逐步上升，保持紧张感和挑战欲。</p>
+        </div>
+        <div class="game-note">
+          <div class="game-note-title">手感调优</div>
+          <p class="game-note-desc">测试时发现“看起来没碰到却判定失败”，用调试模式把碰撞范围可视化，将判定半径从 30px 收紧到 20–25px，让判定与画面一致。</p>
+        </div>
+        <div class="game-note">
+          <div class="game-note-title">后续想法</div>
+          <p class="game-note-desc">增加犬种和饰品自定义，提升玩家对角色的情感投入与留存。</p>
+        </div>
+      </div>
+    </div>
+    <!-- MIT App -->
+    <div class="work-category reveal">AI 学习应用 · 基于 MIT《How to AI》课程的双语 Web 应用</div>
+    <div class="app-layout reveal">
+      <div class="app-item">
+        <div class="app-screen">
+          <img src="images/app1.png" alt="应用截图1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="app-screen-placeholder" style="display:none">
+            <div class="img-icon">📲</div>
+            <span>app1.png</span>
+          </div>
+        </div>
+        <div class="app-info">
+          <div class="app-name">学习控制台</div>
+          <div class="app-tool">双语 Web 应用</div>
+        </div>
+      </div>
+      <div class="app-item">
+        <div class="app-screen">
+          <img src="images/app2.png" alt="应用截图2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="app-screen-placeholder" style="display:none">
+            <div class="img-icon">📲</div>
+            <span>app2.png</span>
+          </div>
+        </div>
+        <div class="app-info">
+          <div class="app-name">闪卡记忆</div>
+          <div class="app-tool">双语 Web 应用</div>
+        </div>
+      </div>
+      <div class="app-item">
+        <div class="app-screen">
+          <img src="images/app3.png" alt="应用截图3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="app-screen-placeholder" style="display:none">
+            <div class="img-icon">📲</div>
+            <span>app3.png</span>
+          </div>
+        </div>
+        <div class="app-info">
+          <div class="app-name">测验系统</div>
+          <div class="app-tool">双语 Web 应用</div>
+        </div>
+      </div>
+      <div class="app-item">
+        <div class="app-screen">
+          <img src="images/app4.png" alt="AI Chat" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="app-screen-placeholder" style="display:none">
+            <div class="img-icon">📲</div>
+            <span>app4.png</span>
+          </div>
+        </div>
+        <div class="app-info">
+          <div class="app-name">AI Chat 助教</div>
+          <div class="app-tool">双语 Web 应用 · AI 问答</div>
+        </div>
+      </div>
+    </div>
+
 
     <!-- 海报设计 -->
     <div class="work-category reveal">海报设计 · Poster Design</div>
@@ -1049,108 +1384,6 @@
         </div>
       </div>
     </div>
-
-    <!-- AI动画短剧 -->
-    <div class="work-category reveal">AI 动画短剧 · AI Animation</div>
-    <div class="drama-layout reveal">
-      <div class="drama-char">
-        <div class="drama-char-img">
-          <img src="images/drama_jack.jpg" alt="杰克·奥·兰" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="drama-char-img-placeholder" style="display:none">
-            <div class="img-icon">🎭</div>
-            <span>drama_jack.jpg</span>
-          </div>
-        </div>
-        <div class="drama-char-info">
-          <div class="drama-char-name">杰克·奥·兰</div>
-          <div class="drama-char-tool">Tensor Art · AI生成角色</div>
-        </div>
-      </div>
-      <div class="drama-char">
-        <div class="drama-char-img">
-          <img src="images/drama_girl.jpg" alt="艾玛·伍兹" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="drama-char-img-placeholder" style="display:none">
-            <div class="img-icon">🎭</div>
-            <span>drama_girl.jpg</span>
-          </div>
-        </div>
-        <div class="drama-char-info">
-          <div class="drama-char-name">艾玛·伍兹</div>
-          <div class="drama-char-tool">Tensor Art · AI生成角色</div>
-        </div>
-      </div>
-    </div>
-    <div class="drama-video reveal">
-      <video controls src="images/drama.mp4" style="width:100%;display:block;max-height:280px;object-fit:contain;background:#000;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"></video>
-      <div class="drama-video-placeholder" style="display:none">
-        <div class="play-icon"></div>
-        <span>drama.mp4 · 视频上传后自动显示</span>
-      </div>
-      <div class="drama-video-info">
-        <div>
-          <div class="drama-title">AI 动画短剧</div>
-          <div class="drama-sub">Tensor Art + 可灵 · 自主创作</div>
-        </div>
-        <span class="tool-badge">AIGC</span>
-      </div>
-    </div>
-
-    <!-- MIT App -->
-    <div class="work-category reveal">MIT App Inventor · AI 学习应用</div>
-    <div class="app-layout reveal">
-      <div class="app-item">
-        <div class="app-screen">
-          <img src="images/app1.png" alt="应用截图1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="app-screen-placeholder" style="display:none">
-            <div class="img-icon">📲</div>
-            <span>app1.png</span>
-          </div>
-        </div>
-        <div class="app-info">
-          <div class="app-name">学习控制台</div>
-          <div class="app-tool">MIT App Inventor</div>
-        </div>
-      </div>
-      <div class="app-item">
-        <div class="app-screen">
-          <img src="images/app2.png" alt="应用截图2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="app-screen-placeholder" style="display:none">
-            <div class="img-icon">📲</div>
-            <span>app2.png</span>
-          </div>
-        </div>
-        <div class="app-info">
-          <div class="app-name">闪卡记忆</div>
-          <div class="app-tool">MIT App Inventor</div>
-        </div>
-      </div>
-      <div class="app-item">
-        <div class="app-screen">
-          <img src="images/app3.png" alt="应用截图3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="app-screen-placeholder" style="display:none">
-            <div class="img-icon">📲</div>
-            <span>app3.png</span>
-          </div>
-        </div>
-        <div class="app-info">
-          <div class="app-name">测验系统</div>
-          <div class="app-tool">MIT App Inventor</div>
-        </div>
-      </div>
-      <div class="app-item">
-        <div class="app-screen">
-          <img src="images/app4.png" alt="AI Chat" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="app-screen-placeholder" style="display:none">
-            <div class="img-icon">📲</div>
-            <span>app4.png</span>
-          </div>
-        </div>
-        <div class="app-info">
-          <div class="app-name">AI Chat 助教</div>
-          <div class="app-tool">MIT App Inventor · Gemini API</div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1158,7 +1391,7 @@
 <section id="skills">
   <div class="skills-inner">
     <div class="section-header reveal">
-      <span class="section-num">03</span>
+      <span class="section-num">04</span>
       <h2 class="section-title">技能</h2>
       <div class="section-line"></div>
     </div>
@@ -1174,28 +1407,53 @@
           <div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div>
         </div>
         <div class="skill-item">
-          <span class="skill-name">英语</span>
+          <span class="skill-name">英语 IELTS 6.0</span>
           <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
         </div>
       </div>
       <div class="skill-group reveal">
-        <div class="skill-group-title">内容创作工具</div>
+        <div class="skill-group-title">游戏经历</div>
+        <div class="skill-item">
+          <span class="skill-name">王者荣耀</span>
+          <span class="skill-meta">7 年 · 最高荣耀王者</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">金铲铲之战</span>
+          <span class="skill-meta">4 年 · 最高大师</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">无畏契约 VALORANT</span>
+          <span class="skill-meta">在玩</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">内容 & 运营工具</div>
         <div>
-          <span class="skill-tag">Tensor Art</span>
-          <span class="skill-tag">可灵 AI</span>
-          <span class="skill-tag">Midjourney</span>
-          <span class="skill-tag">剪映</span>
+          <span class="skill-tag">YouTube Studio</span>
           <span class="skill-tag">Canva</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">剪映</span>
           <span class="skill-tag">小红书</span>
           <span class="skill-tag">视频号</span>
+          <span class="skill-tag">Tensor Art</span>
+          <span class="skill-tag">可灵 AI</span>
+          <span class="skill-tag">海螺</span>
+          <span class="skill-tag">Midjourney</span>
+          <span class="skill-tag">ChatGPT</span>
           <span class="skill-tag">Claude</span>
+          <span class="skill-tag">Gemini</span>
           <span class="skill-tag">Notion</span>
         </div>
       </div>
       <div class="skill-group reveal">
-        <div class="skill-group-title">研究 & 开发</div>
+        <div class="skill-group-title">数据 & 研究</div>
         <div>
-          <span class="skill-tag">MIT App Inventor</span>
+          <span class="skill-tag">Excel</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">R</span>
+          <span class="skill-tag">文本挖掘</span>
+          <span class="skill-tag">LDA 主题建模</span>
+          <span class="skill-tag">Web 应用开发</span>
           <span class="skill-tag">NotebookLM</span>
           <span class="skill-tag">问卷设计</span>
           <span class="skill-tag">学术写作</span>
@@ -1204,12 +1462,11 @@
     </div>
   </div>
 </section>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner reveal">
     <div class="section-header" style="justify-content:center;">
-      <span class="section-num">04</span>
+      <span class="section-num">05</span>
       <h2 class="section-title">联系我</h2>
     </div>
     <p class="contact-sub">
@@ -1250,6 +1507,42 @@
     });
   }, { threshold: 0.1 });
   revealEls.forEach(el => io.observe(el));
+
+  // Count-up for stat numbers ("529万+", "10 周 335万+ 播放" ...): the largest number in the text animates,
+  // single-digit ones ("1个月", "6级") stay as they are
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const countEls = [...document.querySelectorAll('.stat-num, .case-num')].map(el => {
+    const text = el.textContent;
+    const nums = [...text.matchAll(/\d[\d,]*(?:\.\d+)?/g)];
+    if (!nums.length) return null;
+    const big = nums.reduce((a, b) => parseFloat(b[0].replace(/,/g, '')) > parseFloat(a[0].replace(/,/g, '')) ? b : a);
+    if (parseFloat(big[0].replace(/,/g, '')) < 10) return null;
+    return { el, m: [null, text.slice(0, big.index), big[0], text.slice(big.index + big[0].length)] };
+  }).filter(Boolean);
+  const countIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      countIo.unobserve(e.target);
+      const { el, m } = countEls.find(x => x.el === e.target);
+      const [, pre, numStr, post] = m;
+      const target = parseFloat(numStr.replace(/,/g, ''));
+      const decimals = (numStr.split('.')[1] || '').length;
+      const useComma = numStr.includes(',');
+      const fmt = v => {
+        let s = v.toFixed(decimals);
+        if (useComma) s = Number(s).toLocaleString('en-US', { minimumFractionDigits: decimals });
+        return pre + s + post;
+      };
+      const start = performance.now(), dur = 1400;
+      const step = now => {
+        const t = Math.min(1, (now - start) / dur);
+        el.textContent = fmt(target * (1 - Math.pow(1 - t, 3)));
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.4 });
+  if (!reduceMotion) countEls.forEach(x => countIo.observe(x.el));
 
   // Active nav link
   const sections = document.querySelectorAll('section[id]');
