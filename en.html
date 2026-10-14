@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiantian Huang · Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafbfc;
+    --bg2: #eef3f6;
+    --bg3: #ffffff;
+    --blue: #29465b;
+    --blue-glow: rgba(41,70,91,0.22);
+    --blue-light: #3f7385;
+    --white: #1f2a33;
+    --gray: #56636d;
+    --gray2: #a3b0b9;
+    --border: rgba(41,70,91,0.14);
+    --accent: #e0a96d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Noto Sans SC', 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 60px;
+    background: rgba(250,251,252,0.86);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--blue-light);
+    letter-spacing: 2px;
+  }
+  .nav-right { display: flex; align-items: center; gap: 32px; }
+  .nav-links { display: flex; gap: 40px; align-items: center; }
+  .lang-switch {
+    display: flex;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    background: var(--bg3);
+  }
+  .lang-switch a {
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 4px 11px;
+    border-radius: 100px;
+    color: var(--gray);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .lang-switch a:hover { color: var(--blue); }
+  .lang-switch a.active { background: var(--blue); color: #ffffff; }
+  .nav-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-dot {
+    width: 6px; height: 6px;
+    background: var(--blue);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--blue);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 60px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(41,70,91,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(41,70,91,0.045) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+  .hero-orb-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(78,122,137,0.16) 0%, transparent 70%);
+    top: -100px; right: 200px;
+  }
+  .hero-orb-2 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(224,169,109,0.14) 0%, transparent 70%);
+    bottom: 0; left: 100px;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+  }
+
+  .hero-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--blue);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-label::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--blue);
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 6vw, 80px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+  .hero-name-en {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-style: italic;
+    color: var(--gray);
+    margin-bottom: 32px;
+    letter-spacing: 2px;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--gray);
+    max-width: 520px;
+    margin-bottom: 36px;
+  }
+  .hero-desc em { color: var(--blue-light); font-style: normal; }
+
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 44px;
+  }
+  .chip {
+    padding: 7px 16px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 12px;
+    color: var(--gray);
+    background: rgba(41,70,91,0.04);
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+  }
+  .chip:hover {
+    border-color: var(--blue);
+    color: var(--blue-light);
+    background: rgba(41,70,91,0.08);
+  }
+
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    padding: 13px 32px;
+    border-radius: 6px;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .btn-primary {
+    background: var(--blue);
+    color: #ffffff;
+    border: 1px solid var(--blue);
+    box-shadow: 0 0 20px var(--blue-glow);
+  }
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--blue);
+    box-shadow: 0 0 30px var(--blue-glow);
+  }
+  .btn-outline {
+    border: 1px solid var(--gray2);
+    color: var(--gray);
+    background: transparent;
+  }
+  .btn-outline:hover {
+    border-color: var(--blue);
+    color: var(--white);
+  }
+
+  /* Hero Photo */
+  .hero-photo-col {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-photo-frame {
+    position: relative;
+    width: 320px;
+  }
+  .hero-photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    z-index: 0;
+  }
+  .hero-photo-frame::after {
+    content: '';
+    position: absolute;
+    top: -6px; left: -6px; right: 16px; bottom: 16px;
+    border-top: 2px solid var(--blue);
+    border-left: 2px solid var(--blue);
+    border-radius: 12px 0 0 0;
+    z-index: 2;
+  }
+  .hero-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    position: relative;
+    z-index: 1;
+    filter: grayscale(15%);
+    transition: filter 0.4s;
+  }
+  .hero-photo:hover { filter: grayscale(0%); }
+  .hero-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--bg3);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+    border: 1px dashed var(--gray2);
+  }
+  .hero-photo-placeholder span {
+    font-size: 12px;
+    color: var(--gray);
+    letter-spacing: 1px;
+    text-align: center;
+    line-height: 1.7;
+    padding: 0 24px;
+  }
+  .hero-badge {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 18px;
+    z-index: 3;
+    backdrop-filter: blur(12px);
+  }
+  .hero-badge-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--blue-light);
+    display: block;
+    line-height: 1;
+  }
+  .hero-badge-label {
+    font-size: 10px;
+    color: var(--gray);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  /* Scroll indicator */
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.4;
+  }
+  .scroll-hint span {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .scroll-line {
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(to bottom, var(--blue), transparent);
+    animation: scrollDown 1.5s ease-in-out infinite;
+  }
+  @keyframes scrollDown {
+    0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+    50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+    100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 60px; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 60px;
+  }
+  .section-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--blue);
+    letter-spacing: 2px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    color: var(--blue);
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent);
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--bg2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .about-text {
+    font-size: 15px;
+    line-height: 2;
+    color: var(--gray);
+  }
+  .about-text p { margin-bottom: 20px; }
+  .about-text strong { color: var(--white); font-weight: 500; }
+  .about-text em { color: var(--blue-light); font-style: normal; }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-content: start;
+  }
+  .stat-card {
+    background: var(--bg3);
+    box-shadow: 0 2px 10px rgba(41,70,91,0.06);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    transition: border-color 0.3s;
+  }
+  .stat-card:hover { border-color: var(--blue); }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: var(--blue-light);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--gray);
+    letter-spacing: 1px;
+  }
+
+  /* ── WORKS ── */
+  #works { background: var(--bg); }
+  .works-inner { max-width: 1100px; margin: 0 auto; }
+
+  /* Work category label */
+  .work-category {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--blue);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    margin-top: 60px;
+  }
+  .work-category:first-child { margin-top: 0; }
+
+  /* Poster grid */
+  .poster-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .poster-item {
+    aspect-ratio: 2/3;
+    background: var(--bg3);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .poster-item:hover {
+    border-color: var(--blue);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(41,70,91,0.12);
+  }
+  .poster-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .poster-item:hover img { transform: scale(1.04); }
+  .poster-item-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .poster-item-placeholder span {
+    font-size: 10px;
+    color: var(--gray2);
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 0 12px;
+  }
+
+  /* Cover grid */
+  .cover-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .cover-item {
+    aspect-ratio: 3/4;
+    background: var(--bg3);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+  }
+  .cover-item:hover {
+    border-color: var(--blue);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(41,70,91,0.12);
+  }
+  .cover-item img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    background: var(--bg2);
+    transition: transform 0.4s;
+  }
+  .cover-item:hover img { transform: scale(1.04); }
+  .cover-item-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cover-item-placeholder span {
+    font-size: 10px;
+    color: var(--gray2);
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 0 8px;
+  }
+
+  /* Drama section */
+  .drama-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .drama-char {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .drama-char:hover {
+    border-color: var(--blue);
+    box-shadow: 0 12px 32px rgba(41,70,91,0.12);
+  }
+  .drama-char-img {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+  .drama-char-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .drama-char:hover .drama-char-img img { transform: scale(1.03); }
+  .drama-char-img-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--bg2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .drama-char-img-placeholder span {
+    font-size: 11px;
+    color: var(--gray2);
+    letter-spacing: 1px;
+  }
+  .drama-char-info {
+    padding: 18px 20px;
+  }
+  .drama-char-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .drama-char-tool {
+    font-size: 11px;
+    color: var(--blue);
+    letter-spacing: 1.5px;
+  }
+
+  .drama-video {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .drama-video:hover { border-color: var(--blue); }
+  .drama-video video {
+    width: 100%;
+    display: block;
+    max-height: 280px;
+    object-fit: contain;
+    background: #000;
+  }
+  .drama-video-placeholder {
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--bg2);
+  }
+  .drama-video-placeholder span {
+    font-size: 11px;
+    color: var(--gray2);
+    letter-spacing: 1px;
+  }
+  .play-icon {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    border: 2px solid var(--blue);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .play-icon::after {
+    content: '';
+    border: 8px solid transparent;
+    border-left: 14px solid var(--blue);
+    margin-left: 4px;
+  }
+  .drama-video-info {
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .drama-title {
+    font-size: 14px;
+    color: var(--white);
+    font-weight: 500;
+  }
+  .drama-sub {
+    font-size: 11px;
+    color: var(--gray);
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+  .tool-badge {
+    font-size: 10px;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    padding: 4px 10px;
+    border-radius: 100px;
+    letter-spacing: 1px;
+  }
+
+  /* Mini game */
+  .game-layout {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .game-notes {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 24px;
+  }
+  .game-note { margin-bottom: 16px; }
+  .game-note:last-child { margin-bottom: 0; }
+  .game-note-title { font-size: 13px; color: var(--white); font-weight: 500; margin-bottom: 4px; }
+  .game-note-desc { font-size: 13px; color: var(--gray); line-height: 1.8; }
+
+  /* App section */  .app-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .app-item {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .app-item:hover {
+    border-color: var(--blue);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(41,70,91,0.12);
+  }
+  .app-screen {
+    background: var(--bg2);
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    position: relative;
+  }
+  .app-screen img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s;
+  }
+  .app-item:hover .app-screen img { transform: scale(1.03); }
+  .app-screen-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .app-screen-placeholder span {
+    font-size: 10px;
+    color: var(--gray2);
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 0 12px;
+  }
+  .app-info {
+    padding: 14px 16px;
+  }
+  .app-name {
+    font-size: 13px;
+    color: var(--white);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .app-tool {
+    font-size: 10px;
+    color: var(--blue);
+    letter-spacing: 1px;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--bg); }
+  .exp-inner { max-width: 1100px; margin: 0 auto; }
+  .exp-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .exp-company { font-size: 24px; font-weight: 500; color: var(--white); }
+  .exp-role { font-size: 13px; color: var(--blue-light); margin-top: 6px; letter-spacing: 0.5px; }
+  .exp-date { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--gray); letter-spacing: 1px; }
+  .exp-kpis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .exp-note {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.5px;
+    margin: 14px 0 48px;
+  }
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .case-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .case-card:hover {
+    border-color: var(--blue);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(41,70,91,0.12);
+  }
+  .case-shot { display: block; background: #fff; }
+  .case-shot img { width: 100%; display: block; }
+  .case-body { padding: 20px 22px 24px; }
+  .case-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--blue);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .case-title { font-size: 16px; color: var(--white); font-weight: 500; }
+  .case-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    color: var(--blue-light);
+    display: block;
+    margin: 6px 0 8px;
+  }
+  .case-desc { font-size: 13px; color: var(--gray); line-height: 1.8; }
+  .exp-duties {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .duty {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .duty-title { font-size: 14px; color: var(--white); font-weight: 500; margin-bottom: 6px; }
+  .duty-desc { font-size: 13px; color: var(--gray); line-height: 1.8; }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--bg2); }
+  .skills-inner { max-width: 1100px; margin: 0 auto; }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .skill-meta { font-size: 12px; color: var(--blue-light); letter-spacing: 0.5px; }
+  .skill-group {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    transition: border-color 0.3s;
+  }
+  .skill-group:hover { border-color: rgba(41,70,91,0.35); }
+  .skill-group-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--blue);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .skill-name {
+    font-size: 13px;
+    color: var(--gray);
+  }
+  .skill-bar-wrap {
+    width: 120px;
+    height: 3px;
+    background: var(--bg2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .skill-bar {
+    height: 100%;
+    background: linear-gradient(to right, var(--blue), var(--blue-light));
+    border-radius: 2px;
+  }
+  .skill-tag {
+    display: inline-block;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 11px;
+    color: var(--gray);
+    margin: 4px 4px 4px 0;
+    transition: all 0.2s;
+  }
+  .skill-tag:hover {
+    border-color: var(--blue);
+    color: var(--blue-light);
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--bg);
+    text-align: center;
+  }
+  .contact-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .contact-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  .contact-sub {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+  .contact-links {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--gray);
+    font-size: 13px;
+    transition: all 0.3s;
+    background: var(--bg2);
+  }
+  .contact-link:hover {
+    border-color: var(--blue);
+    color: var(--white);
+    background: rgba(41,70,91,0.06);
+  }
+  .contact-link svg {
+    width: 16px; height: 16px;
+    fill: currentColor;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 28px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer span {
+    font-size: 12px;
+    color: var(--gray2);
+    letter-spacing: 0.5px;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    color: var(--gray2);
+  }
+
+  /* ── PLACEHOLDER ICON ── */
+  .img-icon {
+    width: 32px; height: 32px;
+    border: 1.5px dashed var(--gray2);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gray2);
+    font-size: 14px;
+  }
+
+  /* ── ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Korean wraps at word (eojeol) boundaries, not mid-word */
+  html:lang(ko) body { word-break: keep-all; overflow-wrap: anywhere; }
+
+  /* Wide letter-spacing suits Latin caps, not CJK/Hangul labels */
+  html:lang(zh) .case-tag, html:lang(ko) .case-tag,
+  html:lang(zh) .work-category, html:lang(ko) .work-category,
+  html:lang(zh) .skill-group-title, html:lang(ko) .skill-group-title,
+  html:lang(zh) .hero-badge-label, html:lang(ko) .hero-badge-label,
+  html:lang(zh) .stat-label, html:lang(ko) .stat-label,
+  html:lang(zh) .drama-char-tool, html:lang(ko) .drama-char-tool,
+  html:lang(zh) .nav-links a, html:lang(ko) .nav-links a {
+    letter-spacing: 0.5px;
+    font-family: 'Noto Sans SC', 'Noto Sans KR', sans-serif;
+  }
+  html:lang(ko) .case-tag, html:lang(ko) .work-category, html:lang(ko) .skill-group-title,
+  html:lang(ko) .hero-badge-label, html:lang(ko) .stat-label, html:lang(ko) .drama-char-tool, html:lang(ko) .nav-links a {
+    font-family: 'Noto Sans KR', 'Noto Sans SC', sans-serif;
+  }
+
+  /* Hero entrance: content rises in one line after another */
+  @keyframes heroIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: none; }
+  }
+  .hero-content > * { animation: heroIn 0.8s ease both; }
+  .hero-content > *:nth-child(1) { animation-delay: 0.05s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.15s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.25s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.38s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.5s; }
+  .hero-content > *:nth-child(6) { animation-delay: 0.62s; }
+  .hero-photo-col { animation: heroIn 1s ease 0.3s both; }
+
+  /* Background glow drifts slowly */
+  @keyframes drift1 {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(-60px, 40px) scale(1.12); }
+  }
+  @keyframes drift2 {
+    from { transform: translate(0, 0); }
+    to { transform: translate(70px, -30px); }
+  }
+  .hero-orb-1 { animation: drift1 14s ease-in-out infinite alternate; }
+  .hero-orb-2 { animation: drift2 18s ease-in-out infinite alternate; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-content > *, .hero-photo-col, .hero-orb-1, .hero-orb-2, .scroll-line, .nav-dot { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 70px 24px; }
+    #hero { padding: 90px 24px 60px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-photo-frame { width: 240px; margin: 0 auto; }
+    .about-grid { grid-template-columns: 1fr; }
+    .poster-grid { grid-template-columns: repeat(2, 1fr); }
+    .cover-grid { grid-template-columns: repeat(2, 1fr); }
+    .drama-layout { grid-template-columns: 1fr; }
+    .app-layout { grid-template-columns: repeat(2, 1fr); }
+    .skills-grid { grid-template-columns: 1fr; }
+    .case-grid, .exp-duties, .game-layout { grid-template-columns: 1fr; }
+    .hero-desc br { display: none; }
+    footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px; }
+  }
+
+  @media (max-width: 600px) {
+    .exp-kpis { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .poster-grid { grid-template-columns: repeat(2, 1fr); }
+    .cover-grid { grid-template-columns: repeat(2, 1fr); }
+    .app-layout { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">TT</div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <span class="nav-dot"></span>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#works">Works</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="lang-switch" aria-label="Language">
+      <a href="./" lang="zh">中</a>
+      <a href="ko.html" lang="ko">한</a>
+      <a href="en.html" lang="en" class="active">EN</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-label">Portfolio · 2026</div>
+      <div class="hero-name">Tiantian Huang</div>
+      <div class="hero-name-en">黄甜甜 · 황첨첨</div>
+      <p class="hero-desc">
+        Overseas content &amp; game community operations. I ran 4 YouTube channels with <em>5.29M+</em> views and <em>5,900+</em> new subscribers; one new channel hit <em>1,000 subscribers in 1 month</em>.
+        M.A. student at Sungkyunkwan University · native Mandarin, Korean TOPIK Level 6.
+      </p>
+      <div class="hero-chips">
+        <span class="chip">Channel operations</span>
+        <span class="chip">Channel cold start</span>
+        <span class="chip">CN–KR localization</span>
+        <span class="chip">Data analysis</span>
+        <span class="chip">AIGC</span>
+        <span class="chip">Korean (TOPIK Level 6)</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#experience" class="btn btn-primary">View experience</a>
+        <a href="#contact" class="btn btn-outline">Contact me</a>
+      </div>
+    </div>
+
+    <div class="hero-photo-col">
+      <div class="hero-photo-frame">
+        <img src="images/avatar.jpg.JPG" alt="Tiantian Huang" class="hero-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="hero-photo-placeholder" style="display:none">
+          <div class="img-icon">📷</div>
+          <span>avatar.jpg.JPG</span>
+        </div>
+        <div class="hero-badge">
+          <span class="hero-badge-num">SKKU</span>
+          <span class="hero-badge-label">Media & Comm · M.A. Year 1</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid reveal">
+    <div>
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 class="section-title">About me</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-text">
+        <p>I'm <strong>Tiantian Huang</strong>, a first-year M.A. student in <strong>Media &amp; Communication at Sungkyunkwan University</strong>. I'm from China: Mandarin is my native language, and I hold <em>TOPIK Level 6</em> in Korean.</p>
+        <p>Since June 2026 I've been a new media operations intern at <strong>上海克雷斯特 (Shanghai)</strong>, running 4 YouTube short-drama channels for Korean and Traditional Chinese audiences end to end, from content selection and title/thumbnail localization to performance analysis. Before that, I ran finance-focused accounts on WeChat Channels and Xiaohongshu.</p>
+        <p>I'm also a <strong>gamer</strong>: 7 years of Honor of Kings (peak: top rank tier), 4 years of Golden Spatula, the mobile TFT (peak: Master), and lately VALORANT. I want to bring my content operations experience into games and connect Korean and Chinese-speaking players.</p>
+        <p>I'm into <em>AIGC</em> and made an AI animated short based on Identity V with Tensor Art and Kling. My research looks at <em>AI chatbot use and emotional well-being</em>.</p>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <span class="stat-num">5.29M+</span>
+        <span class="stat-label">YouTube views</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">1 month</span>
+        <span class="stat-label">to 1,000 subscribers (new channel)</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">Level 6</span>
+        <span class="stat-label">Korean TOPIK</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">7 yrs</span>
+        <span class="stat-label">Honor of Kings · top rank tier</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="exp-inner">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="exp-head reveal">
+      <div>
+        <div class="exp-company">上海克雷斯特 (Shanghai)</div>
+        <div class="exp-role">New Media Operations Intern · overseas YouTube drama channels</div>
+      </div>
+      <div class="exp-date">Jun 2026 – Present</div>
+    </div>
+
+    <div class="exp-kpis reveal">
+      <div class="stat-card">
+        <span class="stat-num">5.29M+</span>
+        <span class="stat-label">Total views</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">1.3M+</span>
+        <span class="stat-label">Watch hours</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">5,900+</span>
+        <span class="stat-label">New subscribers</span>
+      </div>
+    </div>
+    <p class="exp-note">Combined across 4 channels (2 Korean, 2 Traditional Chinese) · Source: YouTube Studio · Jun 22 – Oct 5, 2026</p>
+
+    <div class="case-grid reveal">
+      <div class="case-card">
+        <a class="case-shot" href="images/yt_honjjul.jpg" target="_blank"><img src="images/yt_honjjul.jpg" alt="혼쭐극장 YouTube Studio data" loading="lazy"></a>
+        <div class="case-body">
+          <div class="case-tag">Korean channel · Cold start</div>
+          <div class="case-title">혼쭐극장</div>
+          <span class="case-num">1,000 subscribers in 1 month</span>
+          <p class="case-desc">Started from zero: 1,500 subscribers in 2 months, 300K+ views and 140K+ watch hours. (Jul 1 – Sep 1, 2026)</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <a class="case-shot" href="images/yt_sungan.jpg" target="_blank"><img src="images/yt_sungan.jpg" alt="순간드라마 YouTube Studio data" loading="lazy"></a>
+        <div class="case-body">
+          <div class="case-tag">Korean channel · Growth</div>
+          <div class="case-title">순간드라마</div>
+          <span class="case-num">3.35M+ views in 10 weeks</span>
+          <p class="case-desc">Took over a 60K+ subscriber channel and kept daily uploads: 920K+ watch hours and 2,291 new subscribers. (Jun 22 – Sep 1, 2026)</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <a class="case-shot" href="images/yt_meiri.jpg" target="_blank"><img src="images/yt_meiri.jpg" alt="每日新劇 YouTube Studio data" loading="lazy"></a>
+        <div class="case-body">
+          <div class="case-tag">Traditional Chinese channel</div>
+          <div class="case-title">每日新劇 Sweet Dramas</div>
+          <span class="case-num">979K views</span>
+          <p class="case-desc">1,489 new subscribers; new subscribers in the last 28 days up 85% vs. the prior period. (Sep 1 – Oct 5, 2026)</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <a class="case-shot" href="images/yt_gufeng.jpg" target="_blank"><img src="images/yt_gufeng.jpg" alt="古風甜劇社 YouTube Studio data" loading="lazy"></a>
+        <div class="case-body">
+          <div class="case-tag">Traditional Chinese channel</div>
+          <div class="case-title">古風甜劇社 SweetDrama</div>
+          <span class="case-num">659K views</span>
+          <p class="case-desc">702 new subscribers; in the last 28 days, new subscribers +60% and watch time +28% vs. the prior period. (Sep 1 – Oct 5, 2026)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-duties reveal">
+      <div class="duty">
+        <div class="duty-title">Content selection &amp; scheduling</div>
+        <p class="duty-desc">Planned content and release schedules across 4 channels, with 20–28 uploads per week.</p>
+      </div>
+      <div class="duty">
+        <div class="duty-title">Title &amp; thumbnail localization</div>
+        <p class="duty-desc">Translated and reviewed Korean content, rewriting titles and copy to fit Korean viewers' phrasing and click habits.</p>
+      </div>
+      <div class="duty">
+        <div class="duty-title">Subtitles &amp; multi-language audio</div>
+        <p class="duty-desc">Set up subtitles and multi-language audio tracks to reach viewers in different regions.</p>
+      </div>
+      <div class="duty">
+        <div class="duty-title">Data analysis</div>
+        <p class="duty-desc">Analyzed CTR, traffic sources and watch time to refine content picks and publishing; top video reached 140K views, with a peak CTR of 28%+.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="works-inner">
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Works</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- AI动画短剧 -->
+    <div class="work-category reveal">Identity V AI Animated Short · AI Animation</div>
+    <div class="drama-layout reveal">
+      <div class="drama-char">
+        <div class="drama-char-img">
+          <img src="images/drama_jack.jpg" alt="Jack" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="drama-char-img-placeholder" style="display:none">
+            <div class="img-icon">🎭</div>
+            <span>drama_jack.jpg</span>
+          </div>
+        </div>
+        <div class="drama-char-info">
+          <div class="drama-char-name">Jack</div>
+          <div class="drama-char-tool">Identity V character · made with Tensor Art</div>
+        </div>
+      </div>
+      <div class="drama-char">
+        <div class="drama-char-img">
+          <img src="images/drama_girl.jpg" alt="Emma Woods" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="drama-char-img-placeholder" style="display:none">
+            <div class="img-icon">🎭</div>
+            <span>drama_girl.jpg</span>
+          </div>
+        </div>
+        <div class="drama-char-info">
+          <div class="drama-char-name">Emma Woods</div>
+          <div class="drama-char-tool">Identity V character · made with Tensor Art</div>
+        </div>
+      </div>
+    </div>
+    <div class="drama-video reveal">
+      <video controls src="images/drama.mp4" style="width:100%;display:block;max-height:280px;object-fit:contain;background:#000;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"></video>
+      <div class="drama-video-placeholder" style="display:none">
+        <div class="play-icon"></div>
+        <span>drama.mp4</span>
+      </div>
+      <div class="drama-video-info">
+        <div>
+          <div class="drama-title">Identity V AI Animated Short</div>
+          <div class="drama-sub">Tensor Art + Kling + Hailuo · solo production</div>
+        </div>
+        <span class="tool-badge">AIGC</span>
+      </div>
+    </div>
+
+    <!-- 小游戏 -->
+    <div class="work-category reveal">Web mini game · p5.js</div>
+    <div class="game-layout reveal">
+      <div class="drama-video">
+        <video controls muted playsinline preload="metadata" src="images/game_dog.mp4" style="width:100%;display:block;max-height:320px;object-fit:contain;background:#87cde5;"></video>
+        <div class="drama-video-info">
+          <div>
+            <div class="drama-title">Puppy Dodge</div>
+            <div class="drama-sub">p5.js · SKKU course project (Metaverse &amp; Content Business) · 2025</div>
+          </div>
+          <span class="tool-badge">GAME</span>
+        </div>
+      </div>
+      <div class="game-notes">
+        <div class="game-note">
+          <div class="game-note-title">Gameplay</div>
+          <p class="game-note-desc">Pick a puppy and dodge falling obstacles with the mouse; survive 40 seconds to clear the level and win a can of dog treats.</p>
+        </div>
+        <div class="game-note">
+          <div class="game-note-title">Difficulty curve</div>
+          <p class="game-note-desc">Obstacles grow larger and fall faster over time, ramping up difficulty to keep the tension and challenge.</p>
+        </div>
+        <div class="game-note">
+          <div class="game-note-title">Hitbox tuning</div>
+          <p class="game-note-desc">Testing showed hits registering without visible contact, so I visualized the hitboxes in a debug mode and tightened the collision radius from 30px to 20–25px to match what players see.</p>
+        </div>
+        <div class="game-note">
+          <div class="game-note-title">Next ideas</div>
+          <p class="game-note-desc">Add more breeds and accessory customization to deepen attachment to the character and improve retention.</p>
+        </div>
+      </div>
+    </div>
+    <!-- MIT App -->
+    <div class="work-category reveal">AI learning app · bilingual web app based on MIT's How to AI course</div>
+    <div class="app-layout reveal">
+      <div class="app-item">
+        <div class="app-screen">
+          <img src="images/app1.png" alt="App screenshot1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="app-screen-placeholder" style="display:none">
+            <div class="img-icon">📲</div>
+            <span>app1.png</span>
+          </div>
+        </div>
+        <div class="app-info">
+          <div class="app-name">Learning dashboard</div>
+          <div class="app-tool">Bilingual web app</div>
+        </div>
+      </div>
+      <div class="app-item">
+        <div class="app-screen">
+          <img src="images/app2.png" alt="App screenshot2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="app-screen-placeholder" style="display:none">
+            <div class="img-icon">📲</div>
+            <span>app2.png</span>
+          </div>
+        </div>
+        <div class="app-info">
+          <div class="app-name">Flashcards</div>
+          <div class="app-tool">Bilingual web app</div>
+        </div>
+      </div>
+      <div class="app-item">
+        <div class="app-screen">
+          <img src="images/app3.png" alt="App screenshot3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="app-screen-placeholder" style="display:none">
+            <div class="img-icon">📲</div>
+            <span>app3.png</span>
+          </div>
+        </div>
+        <div class="app-info">
+          <div class="app-name">Quizzes</div>
+          <div class="app-tool">Bilingual web app</div>
+        </div>
+      </div>
+      <div class="app-item">
+        <div class="app-screen">
+          <img src="images/app4.png" alt="AI Chat" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="app-screen-placeholder" style="display:none">
+            <div class="img-icon">📲</div>
+            <span>app4.png</span>
+          </div>
+        </div>
+        <div class="app-info">
+          <div class="app-name">AI chat tutor</div>
+          <div class="app-tool">Bilingual web app · AI Q&amp;A</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- 海报设计 -->
+    <div class="work-category reveal">Poster Design</div>
+    <div class="poster-grid reveal">
+      <div class="poster-item">
+        <img src="images/poster1.jpg" alt="Poster1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="poster-item-placeholder" style="display:none">
+          <div class="img-icon">🎨</div>
+          <span>poster1.jpg</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="images/poster2.jpg" alt="Poster2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="poster-item-placeholder" style="display:none">
+          <div class="img-icon">🎨</div>
+          <span>poster2.jpg</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="images/poster3.jpg" alt="Poster3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="poster-item-placeholder" style="display:none">
+          <div class="img-icon">🎨</div>
+          <span>poster3.jpg</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="images/poster4.jpg" alt="Poster4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="poster-item-placeholder" style="display:none">
+          <div class="img-icon">🎨</div>
+          <span>poster4.jpg</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="skills-inner">
+    <div class="section-header reveal">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-item">
+          <span class="skill-name">Mandarin (native)</span>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:100%"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Korean (TOPIK Level 6)</span>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">English (IELTS 6.0)</span>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Gaming</div>
+        <div class="skill-item">
+          <span class="skill-name">Honor of Kings</span>
+          <span class="skill-meta">7 yrs · peak: top rank tier</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Golden Spatula (TFT Mobile)</span>
+          <span class="skill-meta">4 yrs · peak: Master</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">VALORANT</span>
+          <span class="skill-meta">Playing now</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Content & ops tools</div>
+        <div>
+          <span class="skill-tag">YouTube Studio</span>
+          <span class="skill-tag">Canva</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">CapCut</span>
+          <span class="skill-tag">Xiaohongshu</span>
+          <span class="skill-tag">WeChat Channels</span>
+          <span class="skill-tag">Tensor Art</span>
+          <span class="skill-tag">Kling AI</span>
+          <span class="skill-tag">Hailuo</span>
+          <span class="skill-tag">Midjourney</span>
+          <span class="skill-tag">ChatGPT</span>
+          <span class="skill-tag">Claude</span>
+          <span class="skill-tag">Gemini</span>
+          <span class="skill-tag">Notion</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Data & research</div>
+        <div>
+          <span class="skill-tag">Excel</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">R</span>
+          <span class="skill-tag">Text mining</span>
+          <span class="skill-tag">LDA topic modeling</span>
+          <span class="skill-tag">Web app development</span>
+          <span class="skill-tag">NotebookLM</span>
+          <span class="skill-tag">Survey design</span>
+          <span class="skill-tag">Academic writing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <div class="section-header" style="justify-content:center;">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <p class="contact-sub">
+      Open to internships, collaborations and good conversations.<br>Feel free to reach out!
+    </p>
+    <div class="contact-links">
+      <a href="mailto:cuamcuam0331@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        cuamcuam0331@gmail.com
+      </a>
+      <a href="https://github.com/cuamcuam0331-png" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/甜甜-黄-a41333368" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Tiantian Huang · Portfolio</span>
+  <span>© 2026 · Made with 💙 in Seoul</span>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Count-up for stat numbers ("529万+", "3.35M+ views in 10 weeks", "3.35M+ views in 10 weeks" ...): the number with
+  // the most digits animates (so 335 / 3.35 wins over "10 weeks"); single-digit ones ("1个月", "6级") stay as they are
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const digits = s => s.replace(/\D/g, '').length;
+  const countEls = [...document.querySelectorAll('.stat-num, .case-num')].map(el => {
+    const text = el.textContent;
+    const nums = [...text.matchAll(/\d[\d,]*(?:\.\d+)?/g)];
+    if (!nums.length) return null;
+    const big = nums.reduce((a, b) => digits(b[0]) > digits(a[0]) || (digits(b[0]) === digits(a[0]) && parseFloat(b[0].replace(/,/g, '')) > parseFloat(a[0].replace(/,/g, ''))) ? b : a);
+    if (digits(big[0]) < 2) return null;
+    return { el, m: [null, text.slice(0, big.index), big[0], text.slice(big.index + big[0].length)] };
+  }).filter(Boolean);
+  const countIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      countIo.unobserve(e.target);
+      const { el, m } = countEls.find(x => x.el === e.target);
+      const [, pre, numStr, post] = m;
+      const target = parseFloat(numStr.replace(/,/g, ''));
+      const decimals = (numStr.split('.')[1] || '').length;
+      const useComma = numStr.includes(',');
+      const fmt = v => {
+        let s = v.toFixed(decimals);
+        if (useComma) s = Number(s).toLocaleString('en-US', { minimumFractionDigits: decimals });
+        return pre + s + post;
+      };
+      const start = performance.now(), dur = 1400;
+      const step = now => {
+        const t = Math.min(1, (now - start) / dur);
+        el.textContent = fmt(target * (1 - Math.pow(1 - t, 3)));
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.4 });
+  if (!reduceMotion) countEls.forEach(x => countIo.observe(x.el));
+
+  // Active nav link
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--white)' : '';
+    });
+  });
+</script>
+</body>
+</html>

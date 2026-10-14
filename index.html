@@ -52,7 +52,27 @@
     color: var(--blue-light);
     letter-spacing: 2px;
   }
+  .nav-right { display: flex; align-items: center; gap: 32px; }
   .nav-links { display: flex; gap: 40px; align-items: center; }
+  .lang-switch {
+    display: flex;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    background: var(--bg3);
+  }
+  .lang-switch a {
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 4px 11px;
+    border-radius: 100px;
+    color: var(--gray);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .lang-switch a:hover { color: var(--blue); }
+  .lang-switch a.active { background: var(--blue); color: #ffffff; }
   .nav-links a {
     color: var(--gray);
     text-decoration: none;
@@ -951,6 +971,25 @@
     transform: none;
   }
 
+  /* Korean wraps at word (eojeol) boundaries, not mid-word */
+  html:lang(ko) body { word-break: keep-all; overflow-wrap: anywhere; }
+
+  /* Wide letter-spacing suits Latin caps, not CJK/Hangul labels */
+  html:lang(zh) .case-tag, html:lang(ko) .case-tag,
+  html:lang(zh) .work-category, html:lang(ko) .work-category,
+  html:lang(zh) .skill-group-title, html:lang(ko) .skill-group-title,
+  html:lang(zh) .hero-badge-label, html:lang(ko) .hero-badge-label,
+  html:lang(zh) .stat-label, html:lang(ko) .stat-label,
+  html:lang(zh) .drama-char-tool, html:lang(ko) .drama-char-tool,
+  html:lang(zh) .nav-links a, html:lang(ko) .nav-links a {
+    letter-spacing: 0.5px;
+    font-family: 'Noto Sans SC', 'Noto Sans KR', sans-serif;
+  }
+  html:lang(ko) .case-tag, html:lang(ko) .work-category, html:lang(ko) .skill-group-title,
+  html:lang(ko) .hero-badge-label, html:lang(ko) .stat-label, html:lang(ko) .drama-char-tool, html:lang(ko) .nav-links a {
+    font-family: 'Noto Sans KR', 'Noto Sans SC', sans-serif;
+  }
+
   /* Hero entrance: content rises in one line after another */
   @keyframes heroIn {
     from { opacity: 0; transform: translateY(18px); }
@@ -1017,13 +1056,20 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">TT</div>
-  <div class="nav-links">
-    <span class="nav-dot"></span>
-    <a href="#about">关于</a>
-    <a href="#experience">经历</a>
-    <a href="#works">作品</a>
-    <a href="#skills">技能</a>
-    <a href="#contact">联系</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <span class="nav-dot"></span>
+      <a href="#about">关于</a>
+      <a href="#experience">经历</a>
+      <a href="#works">作品</a>
+      <a href="#skills">技能</a>
+      <a href="#contact">联系</a>
+    </div>
+    <div class="lang-switch" aria-label="Language">
+      <a href="./" lang="zh" class="active">中</a>
+      <a href="ko.html" lang="ko">한</a>
+      <a href="en.html" lang="en">EN</a>
+    </div>
   </div>
 </nav>
 
@@ -1508,15 +1554,16 @@
   }, { threshold: 0.1 });
   revealEls.forEach(el => io.observe(el));
 
-  // Count-up for stat numbers ("529万+", "10 周 335万+ 播放" ...): the largest number in the text animates,
-  // single-digit ones ("1个月", "6级") stay as they are
+  // Count-up for stat numbers ("529万+", "10 周 335万+ 播放", "3.35M+ views in 10 weeks" ...): the number with
+  // the most digits animates (so 335 / 3.35 wins over "10 weeks"); single-digit ones ("1个月", "6级") stay as they are
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const digits = s => s.replace(/\D/g, '').length;
   const countEls = [...document.querySelectorAll('.stat-num, .case-num')].map(el => {
     const text = el.textContent;
     const nums = [...text.matchAll(/\d[\d,]*(?:\.\d+)?/g)];
     if (!nums.length) return null;
-    const big = nums.reduce((a, b) => parseFloat(b[0].replace(/,/g, '')) > parseFloat(a[0].replace(/,/g, '')) ? b : a);
-    if (parseFloat(big[0].replace(/,/g, '')) < 10) return null;
+    const big = nums.reduce((a, b) => digits(b[0]) > digits(a[0]) || (digits(b[0]) === digits(a[0]) && parseFloat(b[0].replace(/,/g, '')) > parseFloat(a[0].replace(/,/g, ''))) ? b : a);
+    if (digits(big[0]) < 2) return null;
     return { el, m: [null, text.slice(0, big.index), big[0], text.slice(big.index + big[0].length)] };
   }).filter(Boolean);
   const countIo = new IntersectionObserver((entries) => {
